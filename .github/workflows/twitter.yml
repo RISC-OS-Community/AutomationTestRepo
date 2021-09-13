@@ -11,7 +11,7 @@ on:
 
 env:
   THIS_REPO: ${{ github.repository }}
-  THIS_SERVER: $${{ github.server }}
+  THIS_SERVER: $${{ env.GITHUB_SERVER_URL }}
 
 jobs:
   tweet:
