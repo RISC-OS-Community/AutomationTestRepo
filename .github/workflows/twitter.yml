@@ -11,7 +11,6 @@ on:
 
 env:
   THIS_REPO: ${{ github.repository }}
-  THIS_SERVER: $${{ env.GITHUB_SERVER_URL }}
 
 jobs:
   tweet:
@@ -19,7 +18,7 @@ jobs:
     steps:
       - uses: ethomson/send-tweet-action@v1
         with:
-          status: "🎉 New Pull Request in ${{ env.THIS_REPO }}! You can check it out here: ${{ env.THIS_SERVER }}/${{ env.THIS_REPO }}" 
+          status: "🎉 New Pull Request in ${{ env.THIS_REPO }}! You can check it out here: ${{ env.GITHUB_SERVER_URL }}/${{ env.THIS_REPO }}" 
           consumer-key: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
           consumer-secret: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
           access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
