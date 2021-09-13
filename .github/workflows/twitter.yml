@@ -1,8 +1,16 @@
+---
 name: Notify twitter
 
 on:
+  # Run on Pull requests:
   pull_request:
     branches: [ main ]
+
+  # Run when manually triggered
+  workflow_dispatch:
+
+env:
+  THIS_REPO: ${{ github.repository }}
 
 jobs:
   tweet:
@@ -10,7 +18,7 @@ jobs:
     steps:
       - uses: ethomson/send-tweet-action@v1
         with:
-          status: "🎉 #RISC_OS New Pull Request in $GITHUB_REPOSITORY ! You can check it out here: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY" 
+          status: "🎉 #RISC_OS New Pull Request in $GTHIS_REPO ! You can check it out here: $GITHUB_SERVER_URL/$THIS_REPO" 
           consumer-key: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
           consumer-secret: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
           access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
